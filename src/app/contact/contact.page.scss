@@ -3,10 +3,10 @@
 #container {
     text-align: center;
   
-    position: relative;
+    position: absolute;
     left: 0;
     right: 0;
-    top: 35%;
+    top: 50%;
     transform: translateY(-50%);
     
   }
@@ -29,13 +29,7 @@
     text-decoration: none;
   }
 
-  #map_canvas {
-    width: 90%;
-    height: 80%;
-    border: 1px solid red;
-  }
-  
-  
+   
   #address {
     padding: 10px;
     font-size: 18px;
@@ -45,7 +39,7 @@
   
   #map {
     width: 100%;
-    height: 50vh;
+    height: 40vh;
   }
   
   // .map-wrapper {
