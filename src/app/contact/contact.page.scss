@@ -3,11 +3,12 @@
 #container {
     text-align: center;
   
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
+    
   }
   
   #container strong {
@@ -44,7 +45,7 @@
   
   #map {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
   }
   
   // .map-wrapper {
