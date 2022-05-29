@@ -8,10 +8,16 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { ContactPageRoutingModule } from './contact-routing.module';
 import { ViewChild, ElementRef } from '@angular/core';
+import { GoogleMap } from '@capacitor/google-maps';
+import { environment } from 'src/environments/environment';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+// const apiKey = "AIzaSyC16zRdIjbGnsKsuZjGUH5UgltGr1sDiy8";
 
 declare var google: any;
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     IonicModule,
     CommonModule,
@@ -25,24 +31,33 @@ declare var google: any;
 
 export class ContactPageModule {
 
-  map:any;
-
-  @ViewChild('map', {read:ElementRef, static:false}) mapRef: ElementRef;
+  @ViewChild('map')
+  mapRef: ElementRef<HTMLElement>;
+  newMap: GoogleMap;
+  center: any = {
+    lat: 33.6,
+    lng: -117.9,
+  };
   
   constructor() {}
 
-  ionViewDidEnter() {
-    this.showMap();
+  ngOnInit(){
+    
   }
 
-  showMap() {
-    const location = new google.maps.LatLng(-17.824858, 31.053028);
-    const options = {
-      center: location,
-      zoom:15,
-      disableDefaultUI: true
-    }
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+  ngAfterViewInit(){
+    this.createMap();
   }
 
+  async createMap() {
+    this.newMap = await GoogleMap.create({
+      id: 'capacitor-google-maps',
+      element: this.mapRef.nativeElement,
+      apiKey: environment.google_maps_api_key,
+      config: {
+        center: this.center,
+        zoom: 13,
+      },
+    });
+  }
 }
