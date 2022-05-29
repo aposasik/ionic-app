@@ -17,7 +17,7 @@ ion-card-title.ion-inherit-color{
   font-size: xx-large;
 }
 
-ion-card-content.md {
+#body > ion-card-content:nth-child(2) {
   position: relative;
   top:30%;
   font-size:16px;
